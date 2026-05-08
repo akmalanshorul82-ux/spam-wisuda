@@ -1,21 +1,46 @@
-batshir_aja forwarded a message
 <style>
-    body { background: #121212; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100vh; margin: 0; }
-    button { font-size: 60px; border: none; background: none; margin: 20px; transition: 0.1s; cursor: pointer; }
-    button:active { transform: scale(1.4); }
-</style>
-<body>
-    <button onclick="send('🎓')">🎓</button>
-    <button onclick="send('❤️')">❤️</button>
-    <button onclick="send('🔥')">🔥</button>
-    <button onclick="send('👏')">👏</button>
+    body { background: #1a1a1a; color: white; font-family: sans-serif; margin: 0; }
+    
+    /* Header Hijau */
+    .nav { background: #064e3b; padding: 10px 15px; display: flex; align-items: center; }
+    .btn-home { background: #4ade80; color: black; border: none; padding: 5px 15px; border-radius: 5px; font-weight: bold; }
 
-    <script src="/socket.io/socket.io.js"></script>
-    <script>
-        const socket = io();
-        function send(emoji) {
-            socket.emit('spam_emote', emoji);
-            if (navigator.vibrate) navigator.vibrate(50); // Efek getar di HP
-        }
-    </script>
+    /* Box Info Putih */
+    .profile-info { background: white; color: #334155; padding: 15px; margin: 0; border-bottom: 2px solid #e2e8f0; }
+    .profile-info p { margin: 5px 0; font-size: 14px; font-weight: bold; }
+    .profile-info span { font-weight: normal; margin-left: 10px; }
+
+    /* Judul Biru Muda */
+    .cta-text { color: #deff9a; padding: 20px 15px 10px; font-weight: bold; font-size: 16px; }
+
+    /* Grid Emote Lingkaran Biru */
+    .grid-container { background: #020617; padding: 20px; min-height: 50vh; }
+    .emote-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 15px; justify-items: center; }
+    .btn-emote { 
+    background: #3b82f6; 
+        width: 65px; height: 65px; 
+        border-radius: 50%; 
+        border: none; 
+        font-size: 30px; 
+        display: flex; align-items: center; justify-content: center;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+    }
+    .btn-emote:active { transform: scale(0.9); background: #2563eb; }
+</style>
+
+<body>
+    <div class="nav"><button class="btn-home">Home</button></div>
+    <div class="profile-info">
+        <p>Nama: <span>ALVIANDI SISWO HARTANTO</span></p>
+        <p>Kelas: <span>12 DKV 1</span></p>
+    </div>
+    <div class="cta-text">Berikan Reaksi Pada Teman Temanmu</div>
+    <div class="grid-container">
+        <div class="emote-grid">
+            <button class="btn-emote" onclick="send('❤️')">❤️</button>
+            <button class="btn-emote" onclick="send('🔥')">🔥</button>
+            <button class="btn-emote" onclick="send('🎓')">🎓</button>
+            <button class="btn-emote" onclick="send('👏')">👏</button>
+            </div>
+    </div>
 </body>
