@@ -1,0 +1,23 @@
+<style>
+    body { background: #000; overflow: hidden; margin: 0; }
+    .emote {
+        position: absolute; bottom: -100px; font-size: 50px;
+        animation: fly 3s linear forwards;
+    }
+    @keyframes fly {
+        to { transform: translateY(-110vh) rotate(360deg); opacity: 0; }
+    }
+</style>
+<div id="stage"></div>
+<script src="/socket.io/socket.io.js"></script>
+<script>
+    const socket = io();
+    socket.on('render_emote', (emoji) => {
+        const el = document.createElement('div');
+        el.className = 'emote';
+        el.innerText = emoji;
+        el.style.left = Math.random() * 95 + "vw";
+        document.getElementById('stage').appendChild(el);
+        setTimeout(() => el.remove(), 3000);
+    });
+</script>

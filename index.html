@@ -1,0 +1,21 @@
+batshir_aja forwarded a message
+<style>
+    body { background: #121212; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; height: 100vh; margin: 0; }
+    button { font-size: 60px; border: none; background: none; margin: 20px; transition: 0.1s; cursor: pointer; }
+    button:active { transform: scale(1.4); }
+</style>
+<body>
+    <button onclick="send('🎓')">🎓</button>
+    <button onclick="send('❤️')">❤️</button>
+    <button onclick="send('🔥')">🔥</button>
+    <button onclick="send('👏')">👏</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        const socket = io();
+        function send(emoji) {
+            socket.emit('spam_emote', emoji);
+            if (navigator.vibrate) navigator.vibrate(50); // Efek getar di HP
+        }
+    </script>
+</body>
